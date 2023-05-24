@@ -1,7 +1,14 @@
 import express from "express";
 
-import { registerUserController } from "./dependecies";
+import { eliminateUserController, registerUserController } from "./dependecies";
 
 export const userRouter = express.Router();
 
-userRouter.post("/", registerUserController.run.bind(registerUserController));
+userRouter.post(
+  "/create",
+  registerUserController.run.bind(registerUserController)
+);
+userRouter.post(
+  "/eliminate",
+  eliminateUserController.run.bind(eliminateUserController)
+);
