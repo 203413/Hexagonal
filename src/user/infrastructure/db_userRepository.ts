@@ -16,4 +16,20 @@ export class PostgresUserRepository implements UserRepository {
     await pool.query("DELETE FROM users2 WHERE username = $1", [user.username]);
     return user;
   }
+
+  async getUser(username: string): Promise<User | null> {
+    console.log("User " + username);
+    const query = await pool.query(
+      'SELECT * FROM public."users2" WHERE username = $1',
+      [username]
+    );
+
+    if (query.rows.length == 0) {
+      return null;
+    }
+
+    const user: User = query.rows[0];
+
+    return user;
+  }
 }

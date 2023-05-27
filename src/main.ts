@@ -9,7 +9,11 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
-// app.use("/health", healthRouter);
+app.get("/", (_, res) => {
+  console.log("Ping");
+  res.send("Ping");
+});
+
 app.use("/users", userRouter);
 
 app.listen(PORT, () => {

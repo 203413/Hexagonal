@@ -8,10 +8,10 @@ export class EliminateUserController {
 
   async run(req: Request, res: Response) {
     const user = req.body;
-    const userCreated = await this.eliminateUserUseCase.run(
+    const userEliminated = await this.eliminateUserUseCase.run(
       new User("1", user.username, "")
     );
-    console.log(userCreated);
+    console.log(userEliminated);
     return res.status(204).json({
       message: "Eliminado",
     });
