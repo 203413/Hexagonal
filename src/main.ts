@@ -9,12 +9,12 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 
-// app.get("/", (_, res) => {
-//   console.log("Ping");
-//   res.send("Ping");
-// });
+app.get("/", (_, res) => {
+  console.log("Ping");
+  res.send("Ping");
+});
 
-app.use("/", userRouter);
+app.use("/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(`[APP] - Starting application on port ${PORT}`);
